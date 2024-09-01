@@ -9,33 +9,27 @@ import { NavLink } from 'react-router-dom';
 
 const PropertyCard = ({ property }) => {
     const dispatch = useDispatch();
-    const [open, setOpen] = useState(false); // State to handle Snackbar visibility
-    const [modalOpen, setModalOpen] = useState(false); // State to handle Modal visibility
+    const [open, setOpen] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false); 
 
-    // Get cart state from Redux store
     const cart = useSelector((state) => state.cart);
 
-    // Find the specific property in the cart
     const cartItem = cart.items.find(item => item.id === property.id);
-    const cartItemCount = cartItem ? cartItem.quantity : 0; // Get the quantity if the item is found
+    const cartItemCount = cartItem ? cartItem.quantity : 0; 
 
-    // Handle adding to cart
     const handleAddToCart = () => {
         dispatch(addToCart(property));
-        setOpen(true); // Show Snackbar
+        setOpen(true);
     };
 
-    // Handle removing from cart
     const handleRemoveFromCart = () => {
         dispatch(removeFromCart(property.id));
     };
 
-    // Handle closing Snackbar
     const handleClose = () => {
         setOpen(false);
     };
 
-    // Handle opening and closing the modal
     const handleOpenModal = () => setModalOpen(true);
     const handleCloseModal = () => setModalOpen(false);
 

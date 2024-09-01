@@ -11,10 +11,8 @@ const cartSlice = createSlice({
     addToCart: (state, action) => {
       const existingItem = state.items.find((item) => item.id === action.payload.id);
       if (existingItem) {
-        // If item exists in the cart, increase its quantity
         existingItem.quantity += 1;
       } else {
-        // If item does not exist in the cart, add it with quantity 1
         state.items.push({ ...action.payload, quantity: 1 });
       }
     },

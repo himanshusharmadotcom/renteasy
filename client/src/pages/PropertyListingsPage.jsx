@@ -17,7 +17,6 @@ const PropertyListingsPage = ({ properties }) => {
     setFilters((prevFilters) => {
       const newFilters = { ...prevFilters, [filterType]: value };
       if (filterType === 'priceRange') {
-        // No need to split or map, as value is already an array of numbers
         newFilters.priceRange = value;
       }
       return newFilters;

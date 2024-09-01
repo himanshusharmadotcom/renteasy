@@ -1,11 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCart, removeFromCart, updateCartQuantity } from '../redux/slices/cartSlice';
+import { useNavigate } from 'react-router-dom';
 
 const CartOverview = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   
-  // Access cart items from Redux store
   const cartItems = useSelector((state) => state.cart.items);
 
   const handleRemove = (id) => {
@@ -69,6 +70,12 @@ const CartOverview = () => {
               className="mt-4 bg-red-600 text-white py-2 px-4 rounded"
             >
               Clear Cart
+            </button>
+            <button
+              onClick={() => navigate('/checkout')}
+              className="mt-4 bg-green-600 text-white py-2 px-4 rounded ml-2"
+            >
+              Proceed to Checkout
             </button>
           </div>
         </div>

@@ -6,16 +6,13 @@ import CartOverview from '../components/CartOverview';
 import { removeFromCart, updateCartQuantity } from '../redux/slices/cartSlice';
 
 const BookingManagementPage = () => {
-  // Get cart items from Redux store
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
-  // Handle removing an item from the cart
   const handleRemove = (itemId) => {
     dispatch(removeFromCart(itemId));
   };
 
-  // Handle updating the quantity of an item in the cart
   const handleUpdateQuantity = (itemId, newQuantity) => {
     dispatch(updateCartQuantity({ id: itemId, quantity: newQuantity }));
   };
